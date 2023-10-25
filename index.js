@@ -25,7 +25,7 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/whoami", (req, res) => {
-  const ipList = req.socket.remoteAddress;
+  const ipList = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
   const newIpList = ipList.split(",").map((ip) => ip.trim());
   const myIp = newIpList[0];
 
