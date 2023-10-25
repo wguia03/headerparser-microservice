@@ -30,7 +30,7 @@ app.get("/api/whoami", (req, res) => {
   const myIp = newIpList[0];
 
   res.json({
-    ipadress: myIp,
+    ipaddress: myIp,
     language: req.acceptsLanguages(),
     software: req.hostname,
   });
