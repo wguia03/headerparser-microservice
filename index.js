@@ -25,8 +25,12 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/whoami", (req, res) => {
+  const ipList = req.socket.remoteAddress;
+  const newIpList = ipList.split(",").map((ip) => ip.trim());
+  const myIp = newIpList[0];
+
   res.json({
-    ipadress: req.socket.remoteAddress,
+    ipadress: myIp,
     language: req.acceptsLanguages(),
     software: req.hostname,
   });
